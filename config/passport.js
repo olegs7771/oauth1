@@ -11,10 +11,12 @@ module.exports = passport => {
       {
         clientID: "991632717694701",
         clientSecret: "c27d128965b5b2a146d6c906d93da299",
-        callbackURL: "http://localhost:3000/auth/facebook/callback"
+        callbackURL: "http://localhost:3000/api/users/auth/facebook/callback"
       },
       (accessToken, refreshToken, profile, cb) => {
-        Users.findOrCreate({ facebookId: profile.id }, function(err, user) {
+        console.log(profile);
+
+        Users.findOne({ facebookId: profile.id }).then(res => {
           return cb(err, user);
         });
       }

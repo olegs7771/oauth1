@@ -8,18 +8,16 @@ router.get("/test", (req, res) => {
 
 router.get(
   "/auth/facebook",
-  passport.authenticate("facebook", {
-    scope: "email"
-  }),
-  (req, res) => {
-    res.json({ msg: "request been sent" });
-  }
+  passport.authenticate("facebook", { scope: "email" }),
+  (req, res) => {}
 );
 
 router.get(
   "/auth/facebook/callback",
   passport.authenticate("facebook", { failureRedirect: "/login" }),
   function(req, res) {
+    return res.json();
+
     // Successful authentication, redirect home.
     res.redirect("/");
   }

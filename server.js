@@ -1,11 +1,14 @@
 const express = require("express");
+const cors = require("cors");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const users = require("./routes/api/users");
 const passport = require("passport");
+
 require("./models/Users");
 
 const app = express();
+app.use(cors());
 app.get("/", (req, res) => res.send("Hello!"));
 
 // parse application/x-www-form-urlencoded
