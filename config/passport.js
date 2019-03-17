@@ -14,9 +14,10 @@ module.exports = passport => {
         callbackURL: "http://localhost:3000/api/users/auth/facebook/callback"
       },
       (accessToken, refreshToken, profile, cb) => {
-        console.log(profile);
+        console.log(accessToken);
+        console.log(profile.id);
 
-        Users.findOne({ facebookId: profile.id }).then(res => {
+        Users.findOne({ facebookId: profile.id }, (err, user) => {
           return cb(err, user);
         });
       }
