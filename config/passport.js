@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 
 const passport = require("passport");
 const FacebookStrategy = require("passport-facebook");
+
 const Users = mongoose.model("user");
 
 module.exports = passport => {
